@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import InputNumber from './InputNumber'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '5'
+    }
+  }
+  value = '10'
+	
+  render() {
+    return (
+      <div>
+        InputNumber受控组件：<InputNumber
+		  value = { this.state.value }
+		  onChange = {(e) => {
+			this.setState({
+			  value: e.target.value
+			})
+		  }}
+		/>
+		<br/>
+		InputNumber非受控组件：<InputNumber
+		  defaultValue = { this.value }
+		  onChange = {(e) => {
+			this.value = e.target.value
+		  }}
+		/>
+	  </div>
+	);
+  }
 }
 
 export default App;
